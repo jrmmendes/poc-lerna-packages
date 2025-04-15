@@ -32,9 +32,11 @@ jobs:
       - name: Bump version with Lerna
         run: |
           BRANCH_NAME="release/${{ github.run_id }}"
-          git checkout -b $BRANCH_NAME
-          git push origin $BRANCH_NAME
           npx lerna version minor -y
+          git checkout -b $BRANCH_NAME
+          git add .
+          git commit -m "chore: version bump"
+          git push origin $BRANCH_NAME
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
