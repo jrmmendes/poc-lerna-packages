@@ -11,6 +11,7 @@ jobs:
 
     permissions:
       contents: write  # Grant write access to the repository
+      pull-requests: write  # Grant write access to create pull requests
 
     steps:
       - name: "Checkout code"
@@ -39,3 +40,9 @@ jobs:
           git checkout -b $BRANCH_NAME
           git push origin $BRANCH_NAME
           npx lerna version minor --yes --no-ci --loglevel verbose
+
+      - name: create pull request
+        run: gh pr create -B main -H $BRANCH_NAME --title 'Merge branch_to_merge into base_branch' --body 'Created by Github action'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH_NAME: release/${{ github.run_id }}
