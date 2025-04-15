@@ -1,0 +1,48 @@
+name: "Release Workflow"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write  # Grant write access to the repository
+      pull-requests: write  # Grant write access to create pull requests
+
+    steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: "User Node.js 20"
+        uses: "actions/setup-node@v3"
+        with:
+          node-version: '20'
+
+      - name: "Configure Git user"
+        run: |
+          git config --global user.email "ci-cd-pipeline@example.com"
+          git config --global user.name "CI/CD Pipeline"
+
+      - name: "Install dependencies"
+        run: npm install
+
+      - name: "Bump version with Lerna"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH_NAME: release/${{ github.run_id }}
+        run: |
+          git checkout -b $BRANCH_NAME
+          git push origin $BRANCH_NAME
+          npx lerna version minor --yes --no-ci --loglevel verbose
+
+      - name: create pull request
+        run: gh pr create -B main -H $BRANCH_NAME --title 'Merge branch_to_merge into base_branch' --body 'Created by Github action'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH_NAME: release/${{ github.run_id }}
