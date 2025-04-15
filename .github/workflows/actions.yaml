@@ -26,7 +26,7 @@ jobs:
 
       # Step 4: Run Lerna version
       - name: Bump version with Lerna
-        run: npx lerna version minor --no-push
+        run: npx lerna version minor --no-push -y
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
