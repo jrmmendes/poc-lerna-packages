@@ -14,4 +14,8 @@ export class Logger {
     console.warn('[warn] %s', message);
   }
 
+  debug(message: string) {
+    console.debug('[debug] %s', message);
+  }
+
 }
