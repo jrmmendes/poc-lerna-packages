@@ -7,6 +7,11 @@ export class Logger {
   }
 
   error(message: string) {
-    console.log('[error] %s', message);
+    console.error('[error] %s', message);
   }
+
+  warn(message: string) {
+    console.warn('[warn] %s', message);
+  }
+
 }
