@@ -31,6 +31,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Stage changes
+        run: |
+          git add -A
+
       - name: Create release branch
         run: |
           BRANCH_NAME="release/${{ github.run_id }}"
