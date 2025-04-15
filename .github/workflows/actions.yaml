@@ -30,16 +30,12 @@ jobs:
         run: npm install
 
       - name: Bump version with Lerna
-        run: npx lerna version minor --no-push -y
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Create release branch
         run: |
           BRANCH_NAME="release/${{ github.run_id }}"
-          git status
           git checkout -b $BRANCH_NAME
-          git push origin $BRANCH_NAME
+          npx lerna version minor -y
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v5
