@@ -7,13 +7,17 @@ This is a simple PoC based on lerna and npm workspaces.
 - [x] each package has its own version;
 - [x] changing @poc/core triggers a new version for @poc/auth;
 
-
-## CI/CD
 ![CI/CD Flow](./docs/ci-cd-flow.png)
 
 - [ ] semantic version bump is infered from convetional commits;
 - [ ] the worker opens a PR with the suggested version and waits for approval;
 
+## Requirements
+- learn
+- nx
+- node
+
+## Common tasks
 
 To install dependencies:
 
