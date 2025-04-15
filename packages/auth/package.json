@@ -1,6 +1,6 @@
 {
   "name": "@poc/auth",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "scripts": {
     "prepublishOnly": "npm-run-all clean build",
     "unpublish": "npm unpublish @poc/auth --force",
