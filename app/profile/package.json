@@ -1,0 +1,23 @@
+{
+  "name": "@poc/profile",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc",
+    "start:dev": "ts-node-dev src/index.ts --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@nestjs/common": "^11.0.17",
+    "@nestjs/core": "^11.0.17",
+    "@poc/core": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "ts-node-dev": "^2.0.0",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3"
+  }
+}
