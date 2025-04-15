@@ -36,7 +36,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH_NAME: release/${{ github.run_id }}
         run: |
-          npx lerna version minor -y --no-ci
+          npx lerna version minor --no-push -y --no-ci
           git checkout -b $BRANCH_NAME
           git push origin $BRANCH_NAME
 
