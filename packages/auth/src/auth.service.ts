@@ -9,9 +9,9 @@ export class AuthService {
 
   validate(username: string, password: string) {
     if(username === 'root' && password === 'toor') {
-      this.logger.info('> user logged in with success');
+      this.logger.info('>> user logged in with success');
     }
 
-    this.logger.error('> invalid username or password');
+    this.logger.error('>> invalid username or password');
   }
 }
