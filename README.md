@@ -35,3 +35,4 @@ nx graph
 # References
 - [Conventional Recommeded Bump](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-recommended-bump)
 - [Lerna - independent version](https://lerna.js.org/docs/features/version-and-publish#independent-mode)
+- [Npm Workspaces (oficial docs)](https://docs.npmjs.com/cli/v11/using-npm/workspaces)
